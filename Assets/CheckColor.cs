@@ -12,11 +12,10 @@ public class TextControl : MonoBehaviour
     public GameObject cube; //あるオブジェクト
                             //public Text right;
 
-    private Color col;
 
     public TMP_Text textUI;
 
-
+    
     void Start()
     {
         
@@ -27,7 +26,7 @@ public class TextControl : MonoBehaviour
 
         if(Input.GetKeyUp(KeyCode.Return))
         {
-            textUI.text = cube.GetComponent<GetRenderTexturePixels>().col.ToString();
+            textUI.text = cube.GetComponent<GetRenderTexturePixels>().color.ToString();
             textUI.gameObject.SetActive(true);
 
             

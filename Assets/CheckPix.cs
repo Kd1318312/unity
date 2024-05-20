@@ -54,7 +54,7 @@ public class GetRenderTexturePixels : MonoBehaviour
     public IEnumerator GetPixels()
     {
         
-        if()
+        
         yield return new WaitForEndOfFrame();
 
         // アクティブなレンダーテクスチャをキャッシュしておく
