@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MyColor : MonoBehaviour
 {
-    public Color color;
+    public Color myColor;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +14,6 @@ public class MyColor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.GetComponent<Renderer>().material.color = color;
+        this.GetComponent<Renderer>().material.color = myColor;
     }
 }

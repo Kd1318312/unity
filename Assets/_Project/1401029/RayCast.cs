@@ -27,13 +27,18 @@ public class RayCast : MonoBehaviour
                 if(stuckcol!=Color.black)
                 {
                     hit.collider.gameObject.GetComponent<ChangeColor>().select_color = stuckcol;
+
+
                 }
             }
+            
             if(Input.GetMouseButtonDown(0)) 
             {
                 if (hit.collider.gameObject.GetComponent<MyColor>())
                 {
-                    stuckcol = hit.collider.gameObject.GetComponent<MyColor>().color;
+                    stuckcol = hit.collider.gameObject.GetComponent<MyColor>().myColor;
+
+                    Debug.Log("Get Color!!!");
                 }
             }
             

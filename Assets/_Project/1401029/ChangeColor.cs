@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class ChangeColor : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class ChangeColor : MonoBehaviour
     public bool select_flg;
 
     private bool change_flg;
+
+    public TextMeshProUGUI m_text;
 
     //選択時の色変更用
     private Color default_color;
@@ -33,18 +36,16 @@ public class ChangeColor : MonoBehaviour
             mat.color = default_color;
         }
         
-        if(Input.GetMouseButtonDown(0)) 
+        if(Input.GetKeyDown(KeyCode.G))
         {
             //フラグがtrueの場合(RayCast.csで変更される)
-            if (select_flg)
-            {
+            
                 //選択から外れたとき用
-                select_flg = false;
+                
                 //オブジェクトの色を変更する
                 mat.color = select_color;
                 change_flg = true;
-            }
+            
         }
-        
     }
 }
