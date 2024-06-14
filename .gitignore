@@ -71,4 +71,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-/[Aa]ssets/InkPainter/
+/Assets/Simple Modular Dungeon/
+/Assets/Font/
+/Assets/UnityChan/
