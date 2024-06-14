@@ -1,0 +1,34 @@
+{
+    "name": "inputactions",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "24a590f8-84a7-47de-bb28-9c9c37f0b617",
+            "actions": [
+                {
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "2a0a9396-f835-4339-ba01-2c811cb32d1e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7a0c34bf-f323-4ba8-9b0d-047d34616f90",
+                    "path": "<Pointer>/delta",
+                    "interactions": "",
+                    "processors": "InvertVector2(invertX=false),ScaleVector2(x=0.3,y=0.2)",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
