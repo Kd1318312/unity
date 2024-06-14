@@ -12,6 +12,8 @@ public class ChangeColor : MonoBehaviour
 
     public TextMeshProUGUI m_text;
 
+    public GameObject Player;
+
     //選択時の色変更用
     private Color default_color;
     public Color select_color;
@@ -36,15 +38,17 @@ public class ChangeColor : MonoBehaviour
             mat.color = default_color;
         }
         
+        
+
         if(Input.GetKeyDown(KeyCode.G))
         {
             //フラグがtrueの場合(RayCast.csで変更される)
-            
-                //選択から外れたとき用
-                
-                //オブジェクトの色を変更する
-                mat.color = select_color;
-                change_flg = true;
+
+            //選択から外れたとき用
+            select_color = Player.GetComponent<PlayerControll2>().stuckcol;
+            //オブジェクトの色を変更する
+            mat.color = select_color;
+            change_flg = true;
             
         }
     }

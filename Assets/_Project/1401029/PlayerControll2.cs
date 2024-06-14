@@ -5,13 +5,14 @@ public class PlayerControll2:MonoBehaviour
 {
 
     public Rigidbody rb;
-    public Transform trans;
+    public Animator anime;
 
     private float Horizontal;                               //←・→、Aキー・Dキー
     private float Vertical;                                 //↑・↓、Wキー・Sキー
 
     private float dashSpeed;
     private Vector3 vec;
+    private Vector3 input;
 
     public Color stuckcol;
 
@@ -19,9 +20,9 @@ public class PlayerControll2:MonoBehaviour
     {
         // Rigidbodyコンポーネントを取得する 
         rb = GetComponent<Rigidbody>();
-        trans= GetComponent<Transform>();
+        stuckcol=Color.white;
     }
-
+    
 
     void Update()
     {
@@ -50,7 +51,7 @@ public class PlayerControll2:MonoBehaviour
 
     void FixedUpdate()
     {
-       
+        
 
 
         if (Input.GetKey(KeyCode.LeftShift))     
@@ -62,12 +63,35 @@ public class PlayerControll2:MonoBehaviour
             dashSpeed = 1.5f;
         }
 
-        //Horizontal = Input.GetAxisRaw("Horizontal");
-        //Vertical = Input.GetAxisRaw("Vertical");
+        Horizontal = Input.GetAxisRaw("Horizontal");
+        Vertical = Input.GetAxisRaw("Vertical");
+
+        input = new Vector3(Horizontal, 0, Vertical);
+        if(input.magnitude>0f)
+        {
+            anime.SetFloat("Speed", input.magnitude);
+        }
+        else
+        {
+            anime.SetFloat("Speed", 0f);
+        }
+
 
         //rb.velocity = new Vector3(Horizontal * dashSpeed, 0, Vertical * dashSpeed);
-        rb.MoveRotation(rb.rotation * Quaternion.Euler(0, Input.GetAxis("Horizontal") * 3.0f, 0));
-        rb.velocity = new Vector3(0, rb.velocity.y, 0) + trans.forward * Input.GetAxis("Vertical") * (-3.0f);
+        // カメラの方向から、X-Z平面の単位ベクトルを取得
+        Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
+
+        // 方向キーの入力値とカメラの向きから、移動方向を決定
+        Vector3 moveForward = cameraForward * Vertical + Camera.main.transform.right * Horizontal;
+
+        // 移動方向にスピードを掛ける。ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す。
+        rb.velocity = moveForward * dashSpeed + new Vector3(0, rb.velocity.y, 0);
+
+        // キャラクターの向きを進行方向に
+        if (moveForward != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(moveForward);
+        }
 
     }
 }

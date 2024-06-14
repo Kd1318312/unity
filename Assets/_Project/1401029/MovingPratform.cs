@@ -6,6 +6,7 @@ public class MovingPlatform : MonoBehaviour
 {
     public bool PlayerTriggerStay;
     private GameObject PlayerObject;
+    
     float x = 0;
     bool y = false;
     bool z = false;
@@ -21,9 +22,10 @@ public class MovingPlatform : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.C))
+        if(Input.GetKeyDown(KeyCode.Return))
         {
             z = true;
+            
         }
 
         if (z)

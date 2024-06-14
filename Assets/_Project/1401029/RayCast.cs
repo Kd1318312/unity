@@ -41,7 +41,16 @@ public class RayCast : MonoBehaviour
                     Debug.Log("Get Color!!!");
                 }
             }
-            
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (hit.collider.gameObject.GetComponent<testColor>())
+                {
+                    stuckcol = hit.collider.gameObject.GetComponent<testColor>().tCol;
+
+                    Debug.Log("Get tCol!!!");
+                }
+            }
+
         }
     }
 }
